@@ -1,0 +1,38 @@
+
+<input [(ngModel)]= "newTaskText" class="form-control mt-2">
+<button (click)="onCreateNewTask(newTaskText)" class="btn btn-outline-success mt-2 mb-2">New Task</button>
+<div class="row" *ngIf="displayList">
+  <div class="col-md-6">
+    <ul *ngIf="displayList"  [class.special]="isSpecial">
+        <li *ngFor="let task of tasks; let i=index" class="list-group-item">
+          <div class="row">
+            <div class="col-md-6">
+                <p *ngIf="!taskIdsBeingEdited[i]">{{task.title}}</p>  
+                <input *ngIf="taskIdsBeingEdited[i]" [(ngModel)]="task.title">
+            </div>
+            <div class="col-md-6">
+                <button *ngIf="!taskIdsBeingEdited[i]" (click)="onStartEditTask(i)" class="btn btn-outline-primary">Edit</button>            
+                <button *ngIf="taskIdsBeingEdited[i]" (click)="onSaveEditTask(i)" class="btn btn-outline-success">Save</button>    
+                <!-- this will delete each task -->
+                <button (click)="onDeleteTask(i)"class="btn btn-outline-primary">Done</button>
+                <button *ngIf="!taskIdsBeingEdited[i]" (click)="onViewTaskDetails(task)" class="btn btn-outline-info float-right">View</button>
+            </div>
+          </div>     
+        </li>    
+    </ul>
+</div>
+<div class="col-md-6" *ngIf="taskBeingDisplayed">
+  <h4>{{taskBeingDisplayed.title}}</h4>
+    <hr>
+    <textarea [(ngModel)]="taskBeingDisplayed.detailtext"></textarea>
+</div>
+</div>
+
+<p>{{ tasks.length}} Tasks</p>
+<button (click)="onToggleDisplay()" class="btn btn-outline-primary">Hide/Show list</button>
+<!-- <button (mouseover)="mouseover()">Hide/Show list</button> -->
+
+<!-- <img [src]="image"> -->
+<!-- <br>
+
+<br> -->
