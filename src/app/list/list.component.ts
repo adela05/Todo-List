@@ -6,7 +6,7 @@ import { TasksService, Task } from '../tasks.service';
 	templateUrl: './list.component.html',
 	styleUrls: [ './list.component.scss' ]
 })
-export class ListComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ListComponent implements OnInit {
 	tasks: Task[] = [];
 	displayList: boolean = true;
 	newTaskText: string = '';
@@ -22,12 +22,12 @@ export class ListComponent implements OnInit, AfterViewInit, OnDestroy {
 		this.getTasks();
 		// console.log('Component starting..');
 	}
-	ngAfterViewInit() {
-		console.log('Component was viewed');
-	}
-	ngOnDestroy() {
-		console.log('Component is ready to be destroyed');
-	}
+	// ngAfterViewInit() {
+	// 	console.log('Component was viewed');
+	// }
+	// ngOnDestroy() {
+	// 	console.log('Component is ready to be destroyed');
+	// }
 	onToggleDisplay() {
 		this.displayList = !this.displayList;
 	}

@@ -1,0 +1,19 @@
+<!-- Createing the form for Adding a new Task -->
+<Form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="mt-2">
+    <input formControlName="title"class="mb-2"><br>
+    <input formControlName="detailText" class="mb-2"><br>
+    <button type="submit" class="btn btn-outline-success">Add Task</button><br>
+
+    <button type="button" (click)="onPatchSampleText()" class="btn btn-outline-success mt-1 mr-1">Patch Value</button>
+    <button type="button" (click)="onSetSampeText()" class="btn btn-outline-success mt-1">Set Value</button>
+    <button type="button" (click)="onResetForm()" class="btn btn-outline-danger mt-1 ml-1">Reset</button>
+</Form>
+<div class="container ml-1">
+<h5>Form Info</h5>
+<p> Status: {{taskForm.status}}<br>
+    Pristine: {{taskForm.pristine}}<br>
+    Dirty: {{taskForm.dirty}}<br>
+    Touched: {{taskForm.touched}}<br>
+    Errors: {{taskForm.error}}
+</p>
+</div>
